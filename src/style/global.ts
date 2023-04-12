@@ -1,3 +1,4 @@
+import 'react-toastify/dist/ReactToastify.css';
 import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
@@ -41,5 +42,14 @@ export const GlobalStyle = createGlobalStyle`
   body {
     font-family: 'Inter', sans-serif;
     background-color: var(--gray-600);
+  }
+
+  main {
+    max-width: 736px;
+    margin: 0 auto;
+  }
+
+  button {
+    cursor: pointer;
   }
 `
