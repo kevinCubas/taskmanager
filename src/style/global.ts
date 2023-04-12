@@ -15,6 +15,9 @@ export const GlobalStyle = createGlobalStyle`
 
     --purple: #8284FA;
     --purple-dark: #5E60CE;
+
+    --yellow: #F7B32B;
+    --green: #8ACB88;
   }
 
   * {
