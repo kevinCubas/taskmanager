@@ -13,15 +13,16 @@ This application is a task manager that allows users to add, edit, and remove ta
 
 - [x] Remove Task: Users can remove tasks from the list of tasks.
 
-- [] Change Task Status: Users can change the status of tasks to indicate whether they are pending, in progress, or completed.
+- [x] Change Task Status: Users can change the status of tasks to indicate whether they are pending, in progress, or completed.
 
 ## Technologies Used:
 
-[Vite]()
-[React]()
-[Typescript]()
-[Styled-components]()
-[React-Icons]()
+[Vite](https://vitejs.dev/)
+[React](https://react.dev/)
+[Typescript](https://www.typescriptlang.org/pt/)
+[Styled-components](https://styled-components.com/)
+[React-Icons](https://react-icons.github.io/react-icons/)
+[React-toastify](https://fkhadra.github.io/react-toastify/introduction)
 
 ## Installation and Setup:
 IN PROGRESS...
