@@ -12,7 +12,7 @@ interface ITaskItemProps {
 }
 
 export function TaskItem({ task }: ITaskItemProps) {
-  const { removeTask } = useTasksContext()
+  const { updateTaskStatus,  removeTask } = useTasksContext()
   const { id, title, description, status, createdAt } = task
   return (
     <S.ListItem theme={status}>
@@ -26,14 +26,14 @@ export function TaskItem({ task }: ITaskItemProps) {
           <button 
             className="in-progress" 
             type="button"
-            onClick={() => console.log("in Progress")}
+            onClick={() => updateTaskStatus(id, "in progress")}
           >
             <MdTimelapse />
           </button>
           <button 
             className="done"
             type="button"
-            onClick={() => console.log("done")}
+            onClick={() => updateTaskStatus(id, "done")}
           >
             <FaCheckCircle />
           </button>

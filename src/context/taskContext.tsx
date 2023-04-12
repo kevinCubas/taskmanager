@@ -10,6 +10,7 @@ interface ITaskContextData {
   tasks: ITask[];
   addTask: (task: ITask) => void;
   removeTask: (taskId: number) => void;
+  updateTaskStatus: (taskId: number, status: string) => void; 
 }
 
 export const TaskContext = createContext<ITaskContextData>({} as ITaskContextData);
@@ -36,12 +37,34 @@ export function TaskProvider({ children }: ITaskProviderProps): JSX.Element {
     toast.info("Task deleted!")
   };
 
+  // Create update task status function 
+  const updateTaskStatus = (taskId: number, status: string) => {
+    if (!tasks.find((task) => task.id === taskId)) {
+      toast.error("Task not found!");
+      return;
+    } else if (tasks.find(task => task.id === taskId)?.status === status) {
+      const updatedTasks = tasks.map((task) => {
+        return task.id === taskId ? {...task, status: "pending"} : task;
+      })
+      setTasks(updatedTasks);
+      toast.info("Task status updated!");
+      return;
+    }
+    
+    const updatedTasks = tasks.map((task) => {
+      return task.id === taskId ? {...task, status} : task;
+    });
+    setTasks(updatedTasks);
+    toast.info("Task status updated!");
+  }
+
   return (
     <TaskContext.Provider
       value={{
         tasks,
         addTask,
         removeTask,
+        updateTaskStatus
       }}
     >
       {children}
