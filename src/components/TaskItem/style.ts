@@ -37,7 +37,6 @@ export const TaskButtons = styled.div`
 
   
   & div button {
-    cursor: pointer;
     background: none;
     border: none;
     font-size: 1.25rem;

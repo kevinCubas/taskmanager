@@ -5,12 +5,14 @@ import { ITask } from "../../types/task";
 import { FiTrash, FiEdit } from "react-icons/fi";
 import { FaCheckCircle } from "react-icons/fa";
 import { MdTimelapse } from "react-icons/md";
+import { useTasksContext } from "../../hooks/useTasksContext";
 
 interface ITaskItemProps {
   task: ITask
 }
 
 export function TaskItem({ task }: ITaskItemProps) {
+  const { removeTask } = useTasksContext()
   const { id, title, description, status, createdAt } = task
   return (
     <S.ListItem theme={status}>
@@ -47,7 +49,7 @@ export function TaskItem({ task }: ITaskItemProps) {
           <button 
             className="delete" 
             type="button"
-            onClick={() => console.log("deleted")}
+            onClick={() => removeTask(id)}
           >
             <FiTrash />
           </button>
