@@ -7,7 +7,7 @@ This application is a task manager that allows users to add, edit, and remove ta
 
 - [x] List Tasks: The home page displays a list of all registered tasks, sorted by their creation date. Each task item shows the title, description, and creation date of the task. 
 
-- [] Users can also filter tasks by their status, such as pending, in progress, or done.
+- [x] Users can also filter tasks by their status, such as pending, in progress, or done.
 
 - [x] Edit Task: Users can edit the title and description of existing tasks to update their information.
 
@@ -28,6 +28,12 @@ This application is a task manager that allows users to add, edit, and remove ta
 ## Installation and Setup:
 IN PROGRESS...
 
+## Additional Information:
+This application uses the Context API to pass tasks to the tree and save tasks to local storage. This allows for efficient state management and persistent data storage for the tasks in the application.
+
 ## Contributors:
 
 [KevinCubas](https://github.com/kevinCubas)
+
+## License:
+This project is licensed under the MIT License.
