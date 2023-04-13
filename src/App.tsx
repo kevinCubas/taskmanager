@@ -14,7 +14,7 @@ function App() {
           <Tasks />
         </main>
       </TaskProvider>
-      <ToastContainer autoClose={2000} limit={5}/>
+      <ToastContainer autoClose={2000} limit={5} theme="dark"/>
     </>
   )
 }

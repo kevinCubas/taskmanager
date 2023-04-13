@@ -5,6 +5,7 @@ import { UpdateTaskModal } from "../UpdateTaskModal";
 import { useState } from "react";
 import { toast } from "react-toastify";
 import { BiTaskX } from "react-icons/bi";
+import { NoItems } from "../NoItems";
 
 export function Tasks() {
   const [status, setStatus] = useState("all");
@@ -69,14 +70,15 @@ export function Tasks() {
         </S.SelectContainer>
       </S.Header>
       {tasks.length === 0 ? (
-        <S.EmptyList>
-          <BiTaskX />
-          <p>You don't have tasks registered yet <br/>
-            <span>
-            Create tasks and organize your to-do items
-            </span>
-          </p>
-        </S.EmptyList>
+        <NoItems 
+          title="You don't have tasks registered yet" 
+          subtitle="Create tasks and organize your to-do items!"
+        />
+      ) : filteredTasks.length === 0 ? (
+        <NoItems 
+          title={`You don't have "${status}" tasks`}
+          subtitle="Review your tasks!"
+        />
       ) : (
         <>
           <S.List>
