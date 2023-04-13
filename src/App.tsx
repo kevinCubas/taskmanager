@@ -1,11 +1,10 @@
-import { ToastContainer } from "react-toastify"
-import { Header } from "./components/Header"
-import { Tasks } from "./components/Tasks"
-import { TaskForm } from "./components/TaskForm"
-import { TaskProvider } from "./context/taskContext"
+import { ToastContainer } from "react-toastify";
+import { Header } from "./components/Header";
+import { Tasks } from "./components/Tasks";
+import { TaskForm } from "./components/TaskForm";
+import { TaskProvider } from "./context/taskContext";
 
 function App() {
-
   return (
     <>
       <Header />

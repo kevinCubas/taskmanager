@@ -2,16 +2,25 @@ import React, { useState } from "react";
 import { toast } from "react-toastify";
 import { useTasksContext } from "../../hooks/useTasksContext";
 import * as S from "./style";
+import { ITask } from "../../types/task";
 
-export function TaskForm() {
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
-  const { addTask } = useTasksContext();
+interface ITaskFormProps {
+  task?: ITask;
+}
+
+export function TaskForm({ task }: ITaskFormProps) {
+  const [title, setTitle] = useState(task?.title || "");
+  const [description, setDescription] = useState(task?.description || "");
+  const { addTask, editTask, closeModal } = useTasksContext();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (title.trim() === "" || description.trim() === "") {
       toast.warn("Please, insert the required input.");
+      return;
+    } else if (task) {
+      editTask(task.id, description, title);
+      closeModal();
       return;
     }
     const newTask = {
@@ -52,7 +61,7 @@ export function TaskForm() {
         type="submit"
         aria-placeholder="Create task button"
       >
-        Create
+        {task ? "Update" : "Create"}
       </S.SubmitButton>
     </S.Form>
   );

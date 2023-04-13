@@ -1,14 +1,16 @@
 import * as S from "./style";
 import { TaskItem } from "../TaskItem";
 import { useTasksContext } from "../../hooks/useTasksContext";
+import { UpdateTaskModal } from "../UpdateTaskModal";
 
 export function Tasks() {
-  const { tasks } = useTasksContext()
+  const { tasks} = useTasksContext()
   
-  const sortedList = [...tasks].sort((prevTask, nextTask) => {
-    return prevTask.createdAt.getMilliseconds() - nextTask.createdAt.getMilliseconds()
+  const sortedList = [...tasks].sort((a, b) => {
+    return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
   })
   return (
+    <>
       <S.List>
         {sortedList.map((task) => {
           return (
@@ -16,5 +18,7 @@ export function Tasks() {
           )
         })}
       </S.List>
+      <UpdateTaskModal />
+    </>
   )
 }

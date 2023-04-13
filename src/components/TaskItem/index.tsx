@@ -12,8 +12,9 @@ interface ITaskItemProps {
 }
 
 export function TaskItem({ task }: ITaskItemProps) {
-  const { updateTaskStatus,  removeTask } = useTasksContext()
-  const { id, title, description, status, createdAt } = task
+  const { openModal, updateTaskStatus, removeTask } = useTasksContext();
+  const { id, title, description, status, createdAt } = task;
+
   return (
     <S.ListItem theme={status}>
       <S.TaskHeader>
@@ -42,7 +43,7 @@ export function TaskItem({ task }: ITaskItemProps) {
           <button 
             className="edit" 
             type="button"
-            onClick={() => console.log("edited")}
+            onClick={() => openModal(task)}
           >
             <FiEdit />
           </button>
