@@ -4,7 +4,6 @@ import { useTasksContext } from "../../hooks/useTasksContext";
 import { UpdateTaskModal } from "../UpdateTaskModal";
 import { useState } from "react";
 import { toast } from "react-toastify";
-import { BiTaskX } from "react-icons/bi";
 import { NoItems } from "../NoItems";
 
 export function Tasks() {
