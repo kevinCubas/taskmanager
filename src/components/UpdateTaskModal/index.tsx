@@ -8,6 +8,7 @@ export function UpdateTaskModal() {
 
   return (
     <ReactModal
+      ariaHideApp={false}
       isOpen={isModalOpen} 
       onRequestClose={closeModal}
       style={{
