@@ -9,12 +9,19 @@ export const ListItem = styled.li`
     border-radius: 0.5rem;
 
     background-color: ${props => props.theme === "in progress" ? 
-      "var(--purple-dark)" : props.theme === "done" ? "var(--blue)" : "var(--gray-500)"};
+      "var(--purple-dark)" : "var(--gray-500)"};
     color: var(--gray-100);
     & p {
       font-size: 1rem;
-      color: var(--gray-100);
+      color: ${props => props.theme === "done" ? "var(--gray-300)" : "var(--gray-100)"};
+      text-decoration: ${props => props.theme === "done" ? "line-through" : "none"};
     }
+
+    & .title {
+      color: ${props => props.theme === "done" ? "var(--gray-300)" : "var(--gray-100)"};
+      text-decoration: ${props => props.theme === "done" ? "line-through" : "none"};
+    }
+
 `
 
 export const TaskHeader = styled.header`

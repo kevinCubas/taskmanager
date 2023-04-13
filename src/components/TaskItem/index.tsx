@@ -18,7 +18,7 @@ export function TaskItem({ task }: ITaskItemProps) {
   return (
     <S.ListItem theme={status}>
       <S.TaskHeader>
-        <h2>{title}</h2>
+        <h2 className="title">{title}</h2>
         <span>Status: {status}</span>
       </S.TaskHeader>
       <p>{description}</p>
