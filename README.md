@@ -7,9 +7,9 @@ This application is a task manager that allows users to add, edit, and remove ta
 
 - [x] List Tasks: The home page displays a list of all registered tasks, sorted by their creation date. Each task item shows the title, description, and creation date of the task. 
 
-- [] Users can also filter tasks by their status, such as pending, in progress, or completed.
+- [] Users can also filter tasks by their status, such as pending, in progress, or done.
 
-- [] Edit Task: Users can edit the title and description of existing tasks to update their information.
+- [x] Edit Task: Users can edit the title and description of existing tasks to update their information.
 
 - [x] Remove Task: Users can remove tasks from the list of tasks.
 
@@ -23,6 +23,7 @@ This application is a task manager that allows users to add, edit, and remove ta
 [Styled-components](https://styled-components.com/)
 [React-Icons](https://react-icons.github.io/react-icons/)
 [React-toastify](https://fkhadra.github.io/react-toastify/introduction)
+[React-Modal](https://reactcommunity.org/react-modal/)
 
 ## Installation and Setup:
 IN PROGRESS...
