@@ -4,6 +4,7 @@ import { useTasksContext } from "../../hooks/useTasksContext";
 import { UpdateTaskModal } from "../UpdateTaskModal";
 import { useState } from "react";
 import { toast } from "react-toastify";
+import { BiTaskX } from "react-icons/bi";
 
 export function Tasks() {
   const [status, setStatus] = useState("all");
@@ -51,14 +52,15 @@ export function Tasks() {
         <p>Tasks created <span>{tasks.length}</span></p>
         <S.SelectContainer>
           <label htmlFor="select-status">Filter by status:</label>
-          <S.Select 
-            id="select-status" 
-            aria-label="Select an option" 
+          <S.Select
+            disabled={tasks.length === 0}
+            id="select-status"
+            aria-label="Select an option"
             onChange={handleChange}
           >
             {options.map((option) => {
               return (
-                <option  key={option.value} value={option.value}>
+                <option key={option.value} value={option.value}>
                   {option.label}
                 </option>
               )
@@ -66,14 +68,27 @@ export function Tasks() {
           </S.Select>
         </S.SelectContainer>
       </S.Header>
-      <S.List>
-        {sortedList.map((task) => {
-          return (
-            <TaskItem key={task.id} task={task} />
-          )
-        })}
-      </S.List>
-      <UpdateTaskModal />
+      {tasks.length === 0 ? (
+        <S.EmptyList>
+          <BiTaskX />
+          <p>You don't have tasks registered yet <br/>
+            <span>
+            Create tasks and organize your to-do items
+            </span>
+          </p>
+        </S.EmptyList>
+      ) : (
+        <>
+          <S.List>
+            {sortedList.map((task) => {
+              return (
+                <TaskItem key={task.id} task={task} />
+              )
+            })}
+          </S.List>
+          <UpdateTaskModal />
+        </>
+      )}
     </>
   )
 }
