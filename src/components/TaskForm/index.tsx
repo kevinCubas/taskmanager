@@ -13,6 +13,20 @@ export function TaskForm({ task }: ITaskFormProps) {
   const [description, setDescription] = useState(task?.description || "");
   const { addTask, editTask, closeModal } = useTasksContext();
 
+  const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setTitle(e.target.value);
+    if (title.length >= e.target.maxLength) {
+      toast.warn('Title: Reach the maximum length!');
+    }
+  };
+
+  const handleDescriptionChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setDescription(e.target.value);
+    if (description.length >= e.target.maxLength) {
+      toast.warn('Description: Reach the maximum length!');
+    }
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (title.trim() === "" || description.trim() === "") {
@@ -45,7 +59,8 @@ export function TaskForm({ task }: ITaskFormProps) {
         aria-required="true"
         required
         value={title}
-        onChange={(e) => setTitle(e.target.value)}
+        onChange={handleTitleChange}
+        maxLength={40}
       />
       <textarea
         className="inputs"
@@ -55,7 +70,7 @@ export function TaskForm({ task }: ITaskFormProps) {
         maxLength={350}
         placeholder="Description"
         value={description}
-        onChange={(e) => setDescription(e.target.value)}
+        onChange={handleDescriptionChange}
       />
       <S.SubmitButton
         type="submit"

@@ -12,12 +12,15 @@ export const ListItem = styled.li`
       "var(--purple-dark)" : "var(--gray-500)"};
     color: var(--gray-100);
     & p {
+      word-wrap: break-word;
       font-size: 1rem;
       color: ${props => props.theme === "done" ? "var(--gray-300)" : "var(--gray-100)"};
       text-decoration: ${props => props.theme === "done" ? "line-through" : "none"};
     }
 
     & .title {
+      word-wrap: break-word;
+      overflow-x: auto;
       color: ${props => props.theme === "done" ? "var(--gray-300)" : "var(--gray-100)"};
       text-decoration: ${props => props.theme === "done" ? "line-through" : "none"};
     }
@@ -26,9 +29,9 @@ export const ListItem = styled.li`
 
 export const TaskHeader = styled.header`
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: 2rem;
-
   & span {
     font-size: 0.7rem;
     color: var(--gray-200);
