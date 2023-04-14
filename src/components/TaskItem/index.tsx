@@ -56,7 +56,7 @@ export function TaskItem({ task }: ITaskItemProps) {
           </button>
         </S.ConfigButtons>
       </S.TaskButtons>
-      <S.CreatedDate>Created at: {createdAt.toLocaleString()}</S.CreatedDate>
+      <S.CreatedDate>Created at: {new Date(createdAt).toLocaleString()}</S.CreatedDate>
     </S.ListItem>
   )
 }
