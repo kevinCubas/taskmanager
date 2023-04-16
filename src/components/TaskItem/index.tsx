@@ -24,15 +24,19 @@ export function TaskItem({ task }: ITaskItemProps) {
       <p>{description}</p>
       <S.TaskButtons>
         <S.StatusButtons theme={status}>
-          <button 
-            className="in-progress" 
+          <button
+            className="in-progress"
+            aria-label="In Progress"
+            title="In Progress"
             type="button"
             onClick={() => updateTaskStatus(id, "in progress")}
           >
             <MdTimelapse />
           </button>
-          <button 
+          <button
             className="done"
+            aria-label="Done"
+            title="Done"
             type="button"
             onClick={() => updateTaskStatus(id, "done")}
           >
@@ -40,15 +44,20 @@ export function TaskItem({ task }: ITaskItemProps) {
           </button>
         </S.StatusButtons>
         <S.ConfigButtons>
-          <button 
-            className="edit" 
+          <button
+            className="edit"
             type="button"
+            aria-label="Edit"
+            title="Edit"
+            aria-haspopup="true"
             onClick={() => openModal(task)}
           >
             <FiEdit />
           </button>
-          <button 
-            className="delete" 
+          <button
+            className="delete"
+            aria-label="Delete"
+            title="Delete"
             type="button"
             onClick={() => removeTask(id)}
           >

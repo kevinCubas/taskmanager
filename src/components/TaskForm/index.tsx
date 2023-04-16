@@ -29,24 +29,24 @@ export function TaskForm({ task }: ITaskFormProps) {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (title.trim() === "" || description.trim() === "") {
-      toast.warn("Please, insert the required input.");
-      return;
-    } else if (task) {
+    if (task) {
       editTask(task.id, description, title);
       closeModal();
       return;
     }
-    const newTask = {
-      id: new Date().getTime(),
-      title,
-      description,
-      createdAt: new Date(),
-      status: "pending",
-    };
-    addTask(newTask);
-    setTitle("");
-    setDescription("");
+    if (title && description) {
+      const newTask = {
+        id: new Date().getTime(),
+        title,
+        description,
+        createdAt: new Date(),
+        status: "pending",
+      };
+      addTask(newTask);
+      setTitle("");
+      setDescription("");
+      return;
+    }
   };
 
   return (
@@ -57,6 +57,7 @@ export function TaskForm({ task }: ITaskFormProps) {
         aria-placeholder="Task Title"
         placeholder="Title"
         aria-required="true"
+        title="Task Title"
         required
         value={title}
         onChange={handleTitleChange}
@@ -67,6 +68,7 @@ export function TaskForm({ task }: ITaskFormProps) {
         aria-placeholder="Task description"
         aria-required="true"
         required
+        title=" Task description"
         maxLength={350}
         placeholder="Description"
         value={description}
