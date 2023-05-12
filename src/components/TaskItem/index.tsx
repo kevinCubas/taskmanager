@@ -27,20 +27,18 @@ export function TaskItem({ task }: ITaskItemProps) {
           <button
             className="in-progress"
             aria-label="In Progress"
-            title="In Progress"
             type="button"
             onClick={() => updateTaskStatus(id, "in progress")}
           >
-            <MdTimelapse />
+            <MdTimelapse /> <span aria-hidden='true'>In Progress</span>
           </button>
           <button
             className="done"
             aria-label="Done"
-            title="Done"
             type="button"
             onClick={() => updateTaskStatus(id, "done")}
           >
-            <FaCheckCircle />
+            <FaCheckCircle /> <span aria-hidden='true'>Done</span>
           </button>
         </S.StatusButtons>
         <S.ConfigButtons>
@@ -48,7 +46,6 @@ export function TaskItem({ task }: ITaskItemProps) {
             className="edit"
             type="button"
             aria-label="Edit"
-            title="Edit"
             aria-haspopup="true"
             onClick={() => openModal(task)}
           >
@@ -57,7 +54,6 @@ export function TaskItem({ task }: ITaskItemProps) {
           <button
             className="delete"
             aria-label="Delete"
-            title="Delete"
             type="button"
             onClick={() => removeTask(id)}
           >

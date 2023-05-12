@@ -13,17 +13,18 @@ export function TaskForm({ task }: ITaskFormProps) {
   const [description, setDescription] = useState(task?.description || "");
   const { addTask, editTask, closeModal } = useTasksContext();
 
+  let isDisabled = title.length === 0 || description.length === 0;
   const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTitle(e.target.value);
-    if (title.length >= e.target.maxLength) {
-      toast.warn('Title: Reach the maximum length!');
+    if (title.length > 40) {
+      setTitle(title.slice(0, 40));
     }
   };
 
   const handleDescriptionChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setDescription(e.target.value);
-    if (description.length >= e.target.maxLength) {
-      toast.warn('Description: Reach the maximum length!');
+    if (description.length > 350) {
+      setDescription(description.slice(0, 350));
     }
   };
 
@@ -47,36 +48,50 @@ export function TaskForm({ task }: ITaskFormProps) {
       setDescription("");
       return;
     }
+    toast.warn("Please fill all fields!");
+    return;
   };
 
   return (
     <S.Form onSubmit={handleSubmit}>
-      <input
-        className="inputs"
-        type="text"
-        aria-placeholder="Task Title"
-        placeholder="Title"
-        aria-required="true"
-        title="Task Title"
-        required
-        value={title}
-        onChange={handleTitleChange}
-        maxLength={40}
-      />
-      <textarea
-        className="inputs"
-        aria-placeholder="Task description"
-        aria-required="true"
-        required
-        title=" Task description"
-        maxLength={350}
-        placeholder="Description"
-        value={description}
-        onChange={handleDescriptionChange}
-      />
+      <label>Title:
+        <S.InputContainer>
+          <input
+            className="inputs"
+            type="text"
+            aria-placeholder="Task Title"
+            placeholder="Title"
+            aria-required="true"
+            aria-label="Task Title"
+            required
+            value={title}
+            onChange={handleTitleChange}
+            maxLength={40}
+          />
+          <span>{title.length}/40</span>
+        </S.InputContainer>
+      </label>
+      <label>Description:
+        <S.InputContainer>
+          <textarea
+            className="inputs"
+            aria-placeholder="Task description"
+            aria-required="true"
+            aria-label="Task description"
+            required
+            maxLength={350}
+            placeholder="Description"
+            value={description}
+            onChange={handleDescriptionChange}
+          />
+          <span>{description.length}/350</span>
+        </S.InputContainer>
+      </label>
       <S.SubmitButton
         type="submit"
         aria-placeholder="Create task button"
+        disabled={isDisabled}
+        aria-disabled={isDisabled}
       >
         {task ? "Update" : "Create"}
       </S.SubmitButton>

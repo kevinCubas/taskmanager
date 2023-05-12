@@ -65,6 +65,9 @@ export const StatusButtons = styled.div`
   gap: 0.75rem;
   & button {
     color: var(--gray-300);
+    & span {
+      display: none;
+    }
   }
   & .in-progress {
     color: ${props => props.theme === "in progress" && "var(--yellow)"};
